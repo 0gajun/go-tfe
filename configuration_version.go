@@ -83,6 +83,9 @@ type ConfigurationVersion struct {
 	Status           ConfigurationStatus `jsonapi:"attr,status"`
 	StatusTimestamps *CVStatusTimestamps `jsonapi:"attr,status-timestamps"`
 	UploadURL        string              `jsonapi:"attr,upload-url"`
+
+	// Relations
+	IngressAttributes *CVIngressAttributes `jsonapi:"relation,ingress-attributes"`
 }
 
 // CVStatusTimestamps holds the timestamps for individual configuration version
@@ -91,6 +94,27 @@ type CVStatusTimestamps struct {
 	FinishedAt time.Time `json:"finished-at"`
 	QueuedAt   time.Time `json:"queued-at"`
 	StartedAt  time.Time `json:"started-at"`
+}
+
+// CVIngressAttributes holds
+type CVIngressAttributes struct {
+	Branch            string `jsonapi:"attr,branch"`
+	CloneURL          string `jsonapi:"attr,clone-url"`
+	CommitMessage     string `jsonapi:"attr,commit-message"`
+	CommitSHA         string `jsonapi:"attr,commit-sha"`
+	CommitURL         string `jsonapi:"attr,commit-url"`
+	CompareURL        string `jsonapi:"attr,compare-url"`
+	Identifier        string `jsonapi:"attr,identifier"`
+	IsPullRequest     bool   `jsonapi:"attr,is-pull-request"`
+	OnDefaultBranch   bool   `jsonapi:"attr,on-default-branch"`
+	PullRequestBody   string `jsonapi:"attr,pull-request-body"`
+	PullRequestNumber int    `jsonapi:"attr,pull-request-number"`
+	PullRequestTitle  string `jsonapi:"attr,pull-request-title"`
+	PullRequestURL    string `jsonapi:"attr,pull-request-url"`
+	SenderAvatarURL   string `jsonapi:"attr,sender-avatar-url"`
+	SenderHTMLURL     string `jsonapi:"attr,sender-html-url"`
+	SenderUsername    string `jsonapi:"attr,sender-username"`
+	Tag               string `jsonapi:"attr,tag"`
 }
 
 // ConfigurationVersionListOptions represents the options for listing
